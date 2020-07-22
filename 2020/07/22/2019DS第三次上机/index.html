@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>2019DS第三次上机 | GTX2000&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="BUAA 2019 数据结构第三次上机 1 连续线段 思路这个题做法很多，我就说说我当时的做法，当时也没学什么算法，才了解了点栈，队列。所以就写了个比较简单想的方法，下面具体说说 首先建立一个结构体，存每根线段的起点坐标，终点坐标，与该点连续的线段数输入每条线段之后对线段进行排序，排序的思路是用起始坐标x小的在后，如果x相同，y小的在后排序之后就可以把线段看成有序的了 现在关键的来了，怎么算最长的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019DS第三次上机">
+<meta property="og:url" content="http://yoursite.com/2020/07/22/2019DS%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B8%8A%E6%9C%BA/index.html">
+<meta property="og:site_name" content="GTX2000&#39;s Blog">
+<meta property="og:description" content="BUAA 2019 数据结构第三次上机 1 连续线段 思路这个题做法很多，我就说说我当时的做法，当时也没学什么算法，才了解了点栈，队列。所以就写了个比较简单想的方法，下面具体说说 首先建立一个结构体，存每根线段的起点坐标，终点坐标，与该点连续的线段数输入每条线段之后对线段进行排序，排序的思路是用起始坐标x小的在后，如果x相同，y小的在后排序之后就可以把线段看成有序的了 现在关键的来了，怎么算最长的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://i2.tiimg.com/723642/992d4ff6e3b83547.png">
+<meta property="og:image" content="http://i2.tiimg.com/723642/3a158e01c80d6d27.png">
+<meta property="article:published_time" content="2020-07-22T04:24:04.000Z">
+<meta property="article:modified_time" content="2020-07-22T04:35:52.281Z">
+<meta property="article:author" content="GTX2000">
+<meta property="article:tag" content="生活">
+<meta property="article:tag" content="ACM">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://i2.tiimg.com/723642/992d4ff6e3b83547.png">
+  
+    <link rel="alternate" href="/atom.xml" title="GTX2000&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GTX2000&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hello,World</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019DS第三次上机" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B8%8A%E6%9C%BA/" class="article-date">
+  <time datetime="2020-07-22T04:24:04.000Z" itemprop="datePublished">2020-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2019DS第三次上机
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>BUAA 2019 数据结构第三次上机</p>
+<h1 id="1-连续线段"><a href="#1-连续线段" class="headerlink" title="1 连续线段"></a>1 连续线段</h1><p><img src="http://i2.tiimg.com/723642/992d4ff6e3b83547.png" alt=""></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这个题做法很多，我就说说我当时的做法，当时也没学什么算法，才了解了点栈，队列。<br>所以就写了个比较简单想的方法，下面具体说说</p>
+<p>首先建立一个结构体，存每根线段的起点坐标，终点坐标，与该点连续的线段数<br>输入每条线段之后<br>对线段进行排序，排序的思路是用起始坐标x小的在后，如果x相同，y小的在后<br>排序之后就可以把线段看成有序的了</p>
+<p>现在关键的来了，怎么算最长的连续线段<br>其实前面已经说过了，每条线段都有一个值num，这给值存了与这个点相连的最多线段<br>下面对线段进行遍历，如果某个线段与另外一个线段首尾相连，那么这条线段所连接的最多线段<br>等于与之相连的线段所连接的最多线段 + 1(也就是这条线段本身)<br>关键在于我们要找最多连续线段的起始点，但由于我们把线段从后往前排序的，这一问题也就解决了</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">seg</span>				//记录线段的起始坐标终止坐标</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> beginx;</span><br><span class="line">    <span class="keyword">int</span> beginy;</span><br><span class="line">    <span class="keyword">int</span> endx;</span><br><span class="line">    <span class="keyword">int</span> endy;</span><br><span class="line">    <span class="keyword">int</span> num;					<span class="comment">//连续线段的值设为num</span></span><br><span class="line">&#125;seg[<span class="number">132</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpfuc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span>			<span class="comment">//排序规则 起始横坐标为第一关键字，起始纵坐标为第二关键字</span></span></span><br><span class="line"><span class="function"></span>&#123;													<span class="comment">//注意是反着排序，从后到前，最后输出num最大的坐标就行</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">seg</span> *<span class="title">c</span> = (<span class="title">seg</span> *)<span class="title">a</span>;</span>						</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">seg</span> *<span class="title">d</span> = (<span class="title">seg</span> *)<span class="title">b</span>;</span></span><br><span class="line">    <span class="keyword">if</span>(c-&gt;beginx!=d-&gt;beginx) <span class="keyword">return</span> d-&gt;beginx - c-&gt;beginx;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> d-&gt;beginy - c-&gt;beginy;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">seg</span> <span class="title">seg</span>[132];</span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);										<span class="comment">//读入线段</span></span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;seg[i].beginx,&amp;seg[i].beginy,&amp;seg[i].endx,&amp;seg[i].endy),seg[i].num = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    qsort(seg,n,<span class="keyword">sizeof</span>(seg[<span class="number">0</span>]),cmpfuc);					<span class="comment">//qsort进行排序</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n<span class="number">-1</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j = i; j &lt; n<span class="number">-1</span>; j++)					<span class="comment">//看看这根线段和下一个线段是不是相连</span></span><br><span class="line">        &#123;											<span class="comment">//是的话，下一根的连续线段数 += 上一根的</span></span><br><span class="line">            <span class="keyword">if</span>(seg[i].beginx==seg[j+<span class="number">1</span>].endx &amp;&amp; seg[i].beginy == seg[j+<span class="number">1</span>].endy)</span><br><span class="line">            &#123;</span><br><span class="line">                seg[j+<span class="number">1</span>].num += seg[i].num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">-1</span>; <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(seg[i].num &gt; <span class="built_in">max</span>)</span><br><span class="line">            <span class="built_in">max</span> = seg[i].num,flag = i;				<span class="comment">//找出最大值，并记录坐标</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d %d"</span>,<span class="built_in">max</span>,seg[flag].beginx,seg[flag].beginy);		<span class="comment">//输出</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="2-猴子选大王"><a href="#2-猴子选大王" class="headerlink" title="2 猴子选大王"></a>2 猴子选大王</h1><p>【问题描述】要从n只猴子中选出一位大王。它们决定使用下面的方法：<br>n只猴子围成一圈，从1到n顺序编号。从第q只猴子开始，从1到m报数，凡报到m的猴子退出竞选，下一次又从退出的那只猴子的下一只开始从1到m报数，直至剩下的最后一只为大王。请问最后哪只猴子被选为大王。<br>【输入形式】控制台输入三个整数n，m，q，各整数间以一个空格分隔。<br>【输出形式】输出最后选为大王的猴子编号。<br>【样例输入】<br>7  4  3<br>【样例输出】<br>4<br>【样例说明】输入有7只猴子，从第3只猴子开始，从1到4报数。最后编号为4的猴子被选为大王。<br>【评分标准】本题要求输出最后被选为大王的猴子编号，完全正确得20分，每个测试点4分。上传C语言文件名为monkey.c。</p>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>这个题在做程设的时候起始应该做过，这类的问题也有个专门的名称：约瑟夫环(Josephus/Joseph Ring/Joseph Ring)<br>只要搞懂约瑟夫环，这个题就解决了。<br>第一个题解就是用约瑟夫环的规律写的；<br>但既然学了数据结构，我们现在用循环链表来实现这个题：<br>这个题的解题方式很多，这里提供2种。</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">JosephRing</span><span class="params">(<span class="keyword">int</span> sum,<span class="keyword">int</span> value, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) <span class="keyword">return</span> (sum + value <span class="number">-1</span>)%sum;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> (JosephRing(sum<span class="number">-1</span>,value,n<span class="number">-1</span>)+value)%sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,m,q;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;q);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,(JosephRing(n,m,n)+q)%n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">head</span>, *<span class="title">u</span>,*<span class="title">v</span>,*<span class="title">p1</span>,*<span class="title">p2</span>;</span></span><br><span class="line">	<span class="keyword">int</span> n, m, p;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;p);</span><br><span class="line">	head = (struct node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct node));</span><br><span class="line">	head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	u = head;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		v = (struct node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct node));</span><br><span class="line">		v-&gt;data = i;</span><br><span class="line">		v-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">		u-&gt;next = v;</span><br><span class="line">		u = v;</span><br><span class="line">	&#125;</span><br><span class="line">	v-&gt;next  = head-&gt;next;</span><br><span class="line">	</span><br><span class="line">	p2 = head-&gt;next;</span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(cnt &lt; p) &#123;</span><br><span class="line">		p2 = p2-&gt;next;</span><br><span class="line">		cnt++;</span><br><span class="line">	&#125;</span><br><span class="line">	p1 = p2;</span><br><span class="line">	cnt = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>( p1-&gt;next != p1) &#123;</span><br><span class="line">		<span class="keyword">while</span>(cnt &lt; m) &#123;</span><br><span class="line">			p1 = p2;</span><br><span class="line">			p2 = p2-&gt;next;</span><br><span class="line">			cnt++;</span><br><span class="line">		&#125;</span><br><span class="line">		cnt = <span class="number">1</span>;</span><br><span class="line">		p1-&gt;next = p2-&gt;next;</span><br><span class="line">		p2 = p2-&gt;next;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,p1-&gt;data);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-多项式相乘"><a href="#3-多项式相乘" class="headerlink" title="3 多项式相乘"></a>3 多项式相乘</h1><p>【问题描述】</p>
+<p>编写一个程序实现两个一元多项式相乘。</p>
+<p>【输入形式】</p>
+<p>首先输入第一个多项式中系数不为0的项的系数和指数，以一个空格分隔。且该多项式中各项的系数均为0或正整数，系数和最高幂次不会超过int类型的表示范围。对于多项式 anxn +a n-1 x n-1 + … + a1x1 + a0x0 的输入方法如下：<br>an  n  a n-1  n-1 …  a1  1  a0  0<br>即相邻两个整数分别表示表达式中一项的系数和指数。在输入中只出现系数不为0的项。最后一项的指数后没有空格，只有一个回车换行符。<br>按照上述方式再输入第二个多项式。</p>
+<p>【输出形式】</p>
+<p>将运算结果输出到屏幕。将系数不为0的项按指数从高到低的顺序输出，每次输出其系数和指数，均以一个空格分隔，最后一项的指数后也可以有一个空格。</p>
+<p>【样例输入】</p>
+<p>10 80000 2 6000 7 300 5 10 18 0<br>3 6000 5 20 8 10 6 0</p>
+<p>【样例输出】</p>
+<p>30 86000 50 80020 80 80010 60 80000 6 12000 21 6300 10 6020 31 6010 66 6000 35 320 56 310 42 300 25 30 130 20 174 10 108 0</p>
+<p>【样例说明】</p>
+<p>输入的两行分别代表如下表达式：<br>10x80000 + 2x6000 + 7x300 + 5x10 + 18<br>3x6000 + 5x20 + 8x10 + 6<br>相乘结果为：<br>30x86000 + 50x80020 + 80x80010 + 60x80000 + 6x12000 + 21x6300 + 10x6020 + 31x6010 + 66x6000 + 35x320 + 56x310 + 42x300 + 25x30 + 130x20 + 174x10 + 108</p>
+<p>提示：利用链表存储多项式的系数和指数。</p>
+<p>【评分标准】</p>
+<p>该题要求输出相乘后多项式中系数不为0的系数和指数，共有5个测试点。上传C语言文件名为multi.c。</p>
+<h2 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h2><p>嗯，看题目感觉就是FFT，但是当初不熟练，自己写了个思路简单的解，以后有机会来补一个FFT的解。</p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> co;                     <span class="comment">//两个值，一个存系数，一个存指数</span></span><br><span class="line">    <span class="keyword">int</span> en;</span><br><span class="line">&#125; a[<span class="number">101230</span>],b[<span class="number">114121</span>],p[<span class="number">123124</span>],q[<span class="number">124124</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cnta = <span class="number">0</span>,cntb= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> c = <span class="string">' '</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpfuc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span>*b)</span>             <span class="comment">//排序，按指数从大到小排序</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> * <span class="title">c</span> = (<span class="title">struct</span> <span class="title">node</span> *)<span class="title">a</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> * <span class="title">d</span> = (<span class="title">struct</span> <span class="title">node</span> *)<span class="title">b</span>;</span></span><br><span class="line">    <span class="keyword">return</span> d-&gt;en - c-&gt;en;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>( c != <span class="string">'\n'</span>)                                   <span class="comment">//读入第一个多项式</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%c"</span>,&amp;a[cnta].co,&amp;a[cnta].en,&amp;c);</span><br><span class="line">        ++cnta;</span><br><span class="line">    &#125;</span><br><span class="line">    c = <span class="string">' '</span>;</span><br><span class="line">    <span class="keyword">while</span>( c != <span class="string">'\n'</span>)                                   <span class="comment">//读入第二个多项式</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%c"</span>,&amp;b[cntb].co,&amp;b[cntb].en,&amp;c);</span><br><span class="line">        ++cntb;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnta; i++)                       <span class="comment">//两个多项式相乘，系数相乘，指数相加</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; cntb; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        p[k].co = a[i].co*b[j].co;</span><br><span class="line">        p[k].en = a[i].en + b[j].en;</span><br><span class="line">        k++;</span><br><span class="line">    &#125;</span><br><span class="line">    qsort(p,k,<span class="keyword">sizeof</span>(p[<span class="number">0</span>]),cmpfuc);                     <span class="comment">//从大到小对指数排序</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(p[i].en == p[i+<span class="number">1</span>].en &amp;&amp; p[i].en != <span class="number">0</span>)        <span class="comment">//合并指数相同的项数</span></span><br><span class="line">        &#123;</span><br><span class="line">            p[i+<span class="number">1</span>].co += p[i].co;</span><br><span class="line">            p[i].co = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        <span class="keyword">if</span>(p[i].co != <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d "</span>,p[i].co,p[i].en);               <span class="comment">//输出就完事了</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-文件加密-环"><a href="#4-文件加密-环" class="headerlink" title="4 文件加密 环"></a>4 文件加密 环</h1><p><img src="http://i2.tiimg.com/723642/3a158e01c80d6d27.png" alt=""></p>
+<h2 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h2><p>没什么意思的带模拟，具体看代码把。</p>
+<h2 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">123124</span>];</span><br><span class="line"><span class="keyword">int</span> flag[<span class="number">130</span>];</span><br><span class="line"><span class="keyword">char</span> key[<span class="number">123</span>];</span><br><span class="line"><span class="keyword">char</span> encrypkey[<span class="number">130</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    FILE * fp1 = fopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>);</span><br><span class="line">    FILE * fp2 = fopen(<span class="string">"in_crpyt.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>((c = getchar()) != <span class="string">'\n'</span>) s[k++] = c;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;  i &lt; k; i++)</span><br><span class="line">        <span class="keyword">if</span>(flag[s[i] - <span class="number">32</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">            key[cnt++] = s[i];</span><br><span class="line">            flag[s[i] - <span class="number">32</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">32</span>; i &lt;= <span class="number">126</span>; i++)</span><br><span class="line">        <span class="keyword">if</span>(flag[i - <span class="number">32</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">            key[cnt++] = i;</span><br><span class="line">            flag[i - <span class="number">32</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s"</span>,key);</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">head</span>, *<span class="title">p</span>, *<span class="title">q</span>;</span></span><br><span class="line">    <span class="keyword">char</span> str;</span><br><span class="line">    head = p = (struct node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct node));</span><br><span class="line">    head-&gt;c = key[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">95</span>; i++) &#123;</span><br><span class="line">        p-&gt;next = (struct node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct node));</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">        p-&gt;c = key[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    p-&gt;next = head;</span><br><span class="line">    q = p;</span><br><span class="line">    p = head;</span><br><span class="line">    <span class="keyword">int</span> m = p-&gt;c;</span><br><span class="line">    <span class="keyword">char</span> in[<span class="number">14124</span>];</span><br><span class="line">    in[<span class="number">0</span>] = p-&gt;c;</span><br><span class="line">    encrypkey[<span class="number">94</span>] = p-&gt;c;</span><br><span class="line">    q-&gt;next = p-&gt;next;</span><br><span class="line">    <span class="built_in">free</span>(p);</span><br><span class="line">    p = q-&gt;next;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(p != p-&gt;next) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != m) &#123;</span><br><span class="line">            q = p;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            i++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">            encrypkey[j++] = p-&gt;c;</span><br><span class="line">            in[j] = p-&gt;c;</span><br><span class="line">            m = p-&gt;c;</span><br><span class="line">            q-&gt;next = p-&gt;next;</span><br><span class="line">            <span class="built_in">free</span>(p);</span><br><span class="line">            p = q-&gt;next;</span><br><span class="line">            i = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    encrypkey[<span class="number">93</span>] = p-&gt;c;</span><br><span class="line">    in[<span class="number">94</span>] = p-&gt;c;</span><br><span class="line">    str = fgetc(fp1);</span><br><span class="line">    <span class="keyword">while</span>(str!= EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>( i = <span class="number">0</span>; i &lt; <span class="number">95</span>; i++)</span><br><span class="line">        <span class="keyword">if</span>(in[i] == str)&#123;</span><br><span class="line">            <span class="built_in">fprintf</span>(fp2,<span class="string">"%c"</span>,encrypkey[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i == <span class="number">95</span>) <span class="built_in">fprintf</span>(fp2,<span class="string">"%c"</span>,str);</span><br><span class="line">        str = fgetc(fp1);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-词频统计（数组或链表实现）"><a href="#5-词频统计（数组或链表实现）" class="headerlink" title="5 词频统计（数组或链表实现）"></a>5 词频统计（数组或链表实现）</h1><p>【问题描述】</p>
+<p>编写程序统计一个英文文本文件中每个单词的出现次数（词频统计），并将统计结果按单词字典序输出到屏幕上。</p>
+<p>注：在此单词为仅由字母组成的字符序列。包含大写字母的单词应将大写字母转换为小写字母后统计。</p>
+<p>【输入形式】</p>
+<p>打开当前目录下文件“article.txt”，从中读取英文单词进行词频统计。</p>
+<p>【输出形式】</p>
+<p>程序将单词统计结果按单词字典序输出到屏幕上，每行输出一个单词及其出现次数，单词和其出现次数间由一个空格分隔，出现次数后无空格，直接为回车。</p>
+<p>【样例输入】</p>
+<p>当前目录下文件article.txt内容如下：</p>
+<p>“Do not take to heart every thing you hear.”<br>“Do not spend all that you have.”<br>“Do not sleep as long as you want;”</p>
+<p>【样例输出】</p>
+<p>all 1<br>as 2<br>do 3<br>every 1<br>have 1<br>hear 1<br>heart 1<br>long 1<br>not 3<br>sleep 1<br>spend 1<br>take 1<br>that 1<br>thing 1<br>to 1<br>want 1<br>you 3</p>
+<p>【样例说明】</p>
+<p>按单词字典序依次输出单词及其出现次数。</p>
+<p>【评分标准】</p>
+<p>通过所有测试点将得满分。</p>
+<h2 id="思路-4"><a href="#思路-4" class="headerlink" title="思路"></a>思路</h2><p>后面还有一个一模一样的题，要求用树实现，我感觉这个题没什么太多的思路，用树的话速度会更快。</p>
+<h2 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">1024</span>];</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line"></span><br><span class="line">&#125;p[<span class="number">2048</span>];                           <span class="comment">//存单词和次数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpfuc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* a, <span class="keyword">const</span> <span class="keyword">void</span>* b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span>* <span class="title">c</span> = (<span class="title">struct</span> <span class="title">node</span>*)<span class="title">a</span>;</span> </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span>* <span class="title">d</span> = (<span class="title">struct</span> <span class="title">node</span>*)<span class="title">b</span>;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">strcmp</span>(c-&gt;s, d-&gt;s);          <span class="comment">//对单词字典序排序</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE* fp = fopen(<span class="string">"article.txt"</span>, <span class="string">"r"</span>);</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">14124</span>];</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((c = fgetc(fp)) != EOF) &#123;</span><br><span class="line">        str[cnt++] = c;                 <span class="comment">//读入所有字符</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(str); i++)</span><br><span class="line">    &#123;</span><br><span class="line">         <span class="keyword">if</span> (!<span class="built_in">isalpha</span>(str[i]))          </span><br><span class="line">        &#123;</span><br><span class="line">            cnt++;                      <span class="comment">//不是字母的话，直接增加单词的个数，可能会有空的，但没关系</span></span><br><span class="line">            k = <span class="number">0</span>;                      <span class="comment">//同时更新单词</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">isalpha</span>(str[i])) p[cnt].s[k++] = <span class="built_in">tolower</span>(str[i]); <span class="comment">//是字母的话就变成小写加在后面。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    qsort(p, cnt, <span class="keyword">sizeof</span>(p[<span class="number">0</span>]), cmpfuc);    <span class="comment">//对单词进行排序</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++)</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strlen</span>(p[i].s)) p[i].num = <span class="number">1</span>;    <span class="comment">//如果有单词，该单词的数量加1</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++)</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">strcmp</span>(p[i].s, p[i + <span class="number">1</span>].s))</span><br><span class="line">        &#123;</span><br><span class="line">            p[i + <span class="number">1</span>].num += p[i].num;       <span class="comment">//计算重复单词</span></span><br><span class="line">            p[i].num = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++)</span><br><span class="line">        <span class="keyword">if</span> (p[i].num != <span class="number">0</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%s %d\n"</span>, p[i].s, p[i].num);    <span class="comment">//输出</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/22/2019DS%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B8%8A%E6%9C%BA/" data-id="ckcwvjok20001lk1bbifq8y1e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/22/2019DS%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%8A%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019DS第二次上机</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第三次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第二次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第一次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/21/My-First-Bolg/">My First Bolg</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/20/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 GTX2000<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

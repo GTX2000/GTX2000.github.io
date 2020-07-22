@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>2019DS第二次上机 | GTX2000&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="BUAA 2019 数据结构第二次上机1 五子棋危险判断【问题描述】 已知两人分别执白棋和黑棋在一个围棋棋盘上下五子棋，若同一颜色的棋子在同一条横行、纵行或斜线上连成5个棋子，则执该颜色棋子的人获胜。编写程序读入某一时刻下棋的状态，并判断是否有人即将获胜，即：同一颜色的棋子在同一条横行、纵列或斜线上连成4个棋子，且该4个棋子的两端至少有一端为空位置。输入的棋盘大小是19×19，用数字0表示空位置（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019DS第二次上机">
+<meta property="og:url" content="http://yoursite.com/2020/07/22/2019DS%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%8A%E6%9C%BA/index.html">
+<meta property="og:site_name" content="GTX2000&#39;s Blog">
+<meta property="og:description" content="BUAA 2019 数据结构第二次上机1 五子棋危险判断【问题描述】 已知两人分别执白棋和黑棋在一个围棋棋盘上下五子棋，若同一颜色的棋子在同一条横行、纵行或斜线上连成5个棋子，则执该颜色棋子的人获胜。编写程序读入某一时刻下棋的状态，并判断是否有人即将获胜，即：同一颜色的棋子在同一条横行、纵列或斜线上连成4个棋子，且该4个棋子的两端至少有一端为空位置。输入的棋盘大小是19×19，用数字0表示空位置（">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://i2.tiimg.com/723642/a0810b7d3d4eafe6.png">
+<meta property="og:image" content="http://i1.fuimg.com/723642/34400af5172c1567.png">
+<meta property="article:published_time" content="2020-07-22T04:23:45.000Z">
+<meta property="article:modified_time" content="2020-07-22T04:31:42.132Z">
+<meta property="article:author" content="GTX2000">
+<meta property="article:tag" content="生活">
+<meta property="article:tag" content="ACM">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://i2.tiimg.com/723642/a0810b7d3d4eafe6.png">
+  
+    <link rel="alternate" href="/atom.xml" title="GTX2000&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GTX2000&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hello,World</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019DS第二次上机" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/22/2019DS%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%8A%E6%9C%BA/" class="article-date">
+  <time datetime="2020-07-22T04:23:45.000Z" itemprop="datePublished">2020-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2019DS第二次上机
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="BUAA-2019-数据结构第二次上机"><a href="#BUAA-2019-数据结构第二次上机" class="headerlink" title="BUAA 2019 数据结构第二次上机"></a>BUAA 2019 数据结构第二次上机</h2><h1 id="1-五子棋危险判断"><a href="#1-五子棋危险判断" class="headerlink" title="1 五子棋危险判断"></a>1 五子棋危险判断</h1><p>【问题描述】</p>
+<p>已知两人分别执白棋和黑棋在一个围棋棋盘上下五子棋，若同一颜色的棋子在同一条横行、纵行或斜线上连成5个棋子，则执该颜色棋子的人获胜。编写程序读入某一时刻下棋的状态，并判断是否有人即将获胜，即：同一颜色的棋子在同一条横行、纵列或斜线上连成4个棋子，且该4个棋子的两端至少有一端为空位置。<br>输入的棋盘大小是19×19，用数字0表示空位置（即没有棋子），用数字1表示该位置下了一白色棋子，用数字2表示该位置下了一黑色棋子。假设同一颜色的棋子在同一条横行、纵列或斜线上连成的棋子个数不会超过4个，并且最多有一人连成线的棋子个数为4。</p>
+<p>【输入形式】</p>
+<p>从控制台输入用来表示棋盘状态的数字0、1或2；每行输入19个数字，各数字之间以一个空格分隔，每行最后一个数字后没有空格；共输入19行表示棋盘状态的数字。</p>
+<p>【输出形式】</p>
+<p>若有人即将获胜，则先输出即将获胜人的棋子颜色（1表示白色棋子，2表示黑色棋子），然后输出英文冒号:，最后输出连成4个棋子连线的起始位置（棋盘横行自上往下、纵列自左往右从1开始计数，横行最小的棋子在棋盘上的横行数和纵列数作为连线的起始位置，若在同一行上，则纵列数最小的棋子位置作为起始位置，两数字之间以一个英文逗号,作为分隔符）。<br>若没有人获胜，则输出英文字符串：No。<br>无论输出什么结果，最后都要有回车换行符。</p>
+<p>【输入样例1】</p>
+<p>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 2 0 1 1 2 0 0 0 0 0 0 0<br>0 0 0 0 0 2 1 1 1 1 2 2 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 1 2 1 2 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 1 1 0 2 2 0 0 0 0 0 0 0 0<br>0 0 0 0 0 2 0 1 0 0 2 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</p>
+<p>【输出样例1】</p>
+<p>1:9,8</p>
+<p>【输入样例2】</p>
+<p>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 1 2 2 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</p>
+<p>【输出样例2】</p>
+<p>No</p>
+<p>【样例说明】</p>
+<p>在输入的样例1中，执白棋（数字1表示）的人即将获胜，连成4个棋子且有一端为空的起始位置在第9行第8列，所以输出1:9,8。<br>在输入的样例2中，还没有同一颜色的棋子连成4个，所以无人即将获胜，直接输出No。</p>
+<p>【评分标准】</p>
+<p>该题要求判断五子棋的棋盘状态，提交程序文件名为chess.c。</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>模拟，暴力就完事了。。。。。。。</p>
+<h2 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> pan[<span class="number">20</span>][<span class="number">20</span>];</span><br><span class="line"><span class="keyword">int</span> i,j;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">willwin1</span><span class="params">(<span class="keyword">int</span> a[<span class="number">20</span>][<span class="number">20</span>],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a[i][j]==<span class="number">1</span>&amp;&amp;a[i][j+<span class="number">1</span>]==<span class="number">1</span>&amp;&amp;a[i][j+<span class="number">2</span>]==<span class="number">1</span>&amp;&amp;a[i][j+<span class="number">3</span>]==<span class="number">1</span>&amp;&amp;(a[i][j<span class="number">-1</span>]==<span class="number">0</span>||a[i][j+<span class="number">4</span>]==<span class="number">0</span>)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a[i][j]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">1</span>][j]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">2</span>][j]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">3</span>][j]==<span class="number">1</span>&amp;&amp;(a[i<span class="number">-1</span>][j]==<span class="number">0</span>||a[i+<span class="number">4</span>][j]==<span class="number">0</span>)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a[i][j]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">1</span>][j<span class="number">-1</span>]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">2</span>][j<span class="number">-2</span>]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">3</span>][j<span class="number">-3</span>]==<span class="number">1</span>&amp;&amp;(a[i<span class="number">-1</span>][j+<span class="number">1</span>]==<span class="number">0</span>||a[i+<span class="number">4</span>][j<span class="number">-4</span>]==<span class="number">0</span>)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a[i][j]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">1</span>][j+<span class="number">1</span>]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">2</span>][j+<span class="number">2</span>]==<span class="number">1</span>&amp;&amp;a[i+<span class="number">3</span>][j+<span class="number">3</span>]==<span class="number">1</span>&amp;&amp;(a[i<span class="number">-1</span>][j<span class="number">-1</span>]==<span class="number">0</span>||a[i+<span class="number">4</span>][j+<span class="number">4</span>]==<span class="number">0</span>))<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">willwin2</span><span class="params">(<span class="keyword">int</span> a[<span class="number">20</span>][<span class="number">20</span>],<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a[i][j]==<span class="number">2</span>&amp;&amp;a[i][j+<span class="number">1</span>]==<span class="number">2</span>&amp;&amp;a[i][j+<span class="number">2</span>]==<span class="number">2</span>&amp;&amp;a[i][j+<span class="number">3</span>]==<span class="number">2</span>&amp;&amp;(a[i][j<span class="number">-1</span>]==<span class="number">0</span>||a[i][j+<span class="number">4</span>]==<span class="number">0</span>)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a[i][j]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">1</span>][j]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">2</span>][j]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">3</span>][j]==<span class="number">2</span>&amp;&amp;(a[i<span class="number">-1</span>][j]==<span class="number">0</span>||a[i+<span class="number">4</span>][j]==<span class="number">0</span>)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a[i][j]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">1</span>][j<span class="number">-1</span>]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">2</span>][j<span class="number">-2</span>]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">3</span>][j<span class="number">-3</span>]==<span class="number">2</span>&amp;&amp;(a[i<span class="number">-1</span>][j+<span class="number">1</span>]==<span class="number">0</span>||a[i+<span class="number">4</span>][j<span class="number">-4</span>]==<span class="number">0</span>)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(a[i][j]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">1</span>][j+<span class="number">1</span>]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">2</span>][j+<span class="number">2</span>]==<span class="number">2</span>&amp;&amp;a[i+<span class="number">3</span>][j+<span class="number">3</span>]==<span class="number">2</span>&amp;&amp;(a[i<span class="number">-1</span>][j<span class="number">-1</span>]==<span class="number">0</span>||a[i+<span class="number">4</span>][j+<span class="number">4</span>]==<span class="number">0</span>))<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; <span class="number">19</span>; i++)</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>; j&lt; <span class="number">19</span>; j++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;pan[i][j]);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i&lt; <span class="number">19</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">0</span>; j&lt; <span class="number">19</span>;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(willwin1(pan,i,j))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"1:%d,%d\n"</span>,i+<span class="number">1</span>,j+<span class="number">1</span>);</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(willwin2(pan,i,j))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"2:%d,%d\n"</span>,i+<span class="number">1</span>,j+<span class="number">1</span>);</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"No\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="2-字符串替换（新）"><a href="#2-字符串替换（新）" class="headerlink" title="2 字符串替换（新）"></a>2 字符串替换（新）</h1><p>【问题描述】</p>
+<p>编写程序将一个指定文件中某一字符串替换为另一个字符串。要求：（1）被替换字符串若有多个，均要被替换；（2）指定的被替换字符串，大小写无关。</p>
+<p>【输入形式】</p>
+<p>给定文件名为filein.txt。从控制台输入两行字符串（不含空格，行末尾都有回车换行符），分别表示被替换的字符串和替换字符串。</p>
+<p>【输出形式】</p>
+<p>将替换后的结果输出到文件fileout.txt中。</p>
+<p>【样例输入】</p>
+<p>从控制台输入两行字符串：</p>
+<p>in</p>
+<p>out</p>
+<p>文件filein.txt的内容为：</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>void main()</p>
+<p>{</p>
+<pre><code>FILE * IN;
+
+if((IN=fopen(&quot;in.txt&quot;,&quot;r&quot;))==NULL)
+
+{
+
+   printf(&quot;Can&amp;rsquo;t open in.txt!&quot;);
+
+   return;
+
+}
+
+fclose(IN);</code></pre><p>}</p>
+<p>【样例输出】</p>
+<p>文件fileout.txt的内容应为：</p>
+<p>#outclude &lt;stdio.h&gt;</p>
+<p>void maout()</p>
+<p>{</p>
+<pre><code>FILE * out;
+
+if((out=fopen(&quot;out.txt&quot;,&quot;r&quot;))==NULL)
+
+{
+
+   prouttf(&quot;Can&amp;rsquo;t open out.txt!&quot;);
+
+   return;
+
+}
+
+fclose(out);</code></pre><p>}</p>
+<p>【样例说明】</p>
+<p>输入的被替换字符串为in，替换字符串为out，即将文件filein.txt中的所有in字符串（包括iN、In、IN字符串）全部替换为out字符串，并输出保存到文件fileout.txt中。</p>
+<p>【评分标准】</p>
+<p>该题要求得到替换后的文件内容，共有5个测试点。上传C语言文件名为replace.c。</p>
+<h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>这个题是涉及到了文件的操作</p>
+<h2 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> go[<span class="number">10001</span>];</span><br><span class="line"><span class="keyword">char</span> togo[<span class="number">10001</span>];</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">10005</span>];</span><br><span class="line"><span class="keyword">char</span> o[<span class="number">1023</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,go);                                                     <span class="comment">//读入被替换字符串</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,togo);                                                   <span class="comment">//读入替换字符串</span></span><br><span class="line">    <span class="keyword">int</span> len1 = <span class="built_in">strlen</span>(go);</span><br><span class="line">    <span class="keyword">int</span> len2 = <span class="built_in">strlen</span>(togo);</span><br><span class="line">    FILE *fp = fopen(<span class="string">"filein.txt"</span>,<span class="string">"r"</span>);                                 <span class="comment">//设置文件指针</span></span><br><span class="line">    FILE *fp2 = fopen(<span class="string">"fileout.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line">    <span class="keyword">char</span> c;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((c=fgetc(fp))!=EOF) s[p++] = c;                               <span class="comment">//读入文件中的字符，并存在数组s中</span></span><br><span class="line">    s[p] = <span class="string">'\0'</span>;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j;</span><br><span class="line">    <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; len)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j = i; j &lt;(len1+i);j++)                                     <span class="comment">//读入被替换字符串长度的代码</span></span><br><span class="line">        &#123;</span><br><span class="line">            o[k] = s[j];</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!strcasecmp(go,o))&#123;                                          <span class="comment">//如果能和被替换字符串匹配，输出替换字符串，i往后走len1个单位</span></span><br><span class="line">            <span class="keyword">int</span> x;</span><br><span class="line">            <span class="keyword">for</span>(x = <span class="number">0</span>; x &lt; len2;x++) fputc(togo[x],fp2);</span><br><span class="line">            i+= len1;</span><br><span class="line">            k = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            fputc(s[i],fp2);                                            <span class="comment">//否则输出当前字符，i++</span></span><br><span class="line">            k = <span class="number">0</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(fp);</span><br><span class="line">    fclose(fp2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-加密文件"><a href="#3-加密文件" class="headerlink" title="3 加密文件"></a>3 加密文件</h1><p><img src="http://i2.tiimg.com/723642/a0810b7d3d4eafe6.png" alt="加密文件"></p>
+<h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><h2 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">505</span>];</span><br><span class="line"><span class="keyword">char</span> encrypt[<span class="number">1005</span>];</span><br><span class="line"><span class="keyword">int</span> flag[<span class="number">205</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fp1 = fopen(<span class="string">"encrypt.txt"</span>,<span class="string">"r"</span>);</span><br><span class="line">    FILE *fp2 = fopen(<span class="string">"output.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line">    <span class="keyword">char</span> p;</span><br><span class="line">    <span class="keyword">int</span> lens = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((p = getchar())!= EOF &amp;&amp; p != <span class="string">'\n'</span>) s[lens++] = p;     <span class="comment">//读入初始密钥</span></span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lens; i++)</span><br><span class="line">        <span class="keyword">if</span>(flag[s[i]-<span class="string">'a'</span>] == <span class="number">0</span>) &#123;                                <span class="comment">//去除初始密钥中重复的字母</span></span><br><span class="line">            s[cnt++] = s[i];</span><br><span class="line">            flag[s[i]-<span class="string">'a'</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">25</span>; i &gt;=<span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">if</span>(flag[i] == <span class="number">0</span>) s[cnt++] = <span class="string">'a'</span>+i;                       <span class="comment">//把除密钥之外的字母倒着加到密钥后面</span></span><br><span class="line">    <span class="keyword">char</span> c; <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>((c = fgetc(fp1))!= EOF) encrypt[k++] = c;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isalpha</span>(encrypt[i])) fputc(s[encrypt[i] - <span class="string">'a'</span>],fp2);  <span class="comment">//输出字母对于的密钥字符</span></span><br><span class="line">        <span class="keyword">else</span> fputc(encrypt[i],fp2);</span><br><span class="line">    fclose(fp1);</span><br><span class="line">    fclose(fp2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="4-通讯录整理"><a href="#4-通讯录整理" class="headerlink" title="4 通讯录整理"></a>4 通讯录整理</h1><p>【问题描述】</p>
+<p>读取一组电话号码簿（由姓名和手机号码组成），将重复出现的项删除（姓名和电话号码都相同的项为重复项，只保留第一次出现的项），并对姓名相同手机号码不同的项进行如下整理：首次出现的项不作处理，第一次重复的姓名后面加英文下划线字符_和数字1，第二次重复的姓名后面加英文下划线字符_和数字2，依次类推。号码簿中姓名相同的项数最多不超过10个。最后对整理后的电话号码簿按照姓名进行从小到大排序，并输出排序后的电话号码簿。</p>
+<p>【输入形式】</p>
+<p>先从标准输入读取电话号码个数，然后分行输入姓名和电话号码，姓名由不超过20个英文小写字母组成，电话号码由11位数字字符组成，姓名和电话号码之间以一个空格分隔，输入的姓名和电话号码项不超过100个。</p>
+<p>【输出形式】</p>
+<p>按照姓名从小到大的顺序分行输出最终的排序结果，先输出姓名再输出电话号码，以一个空格分隔。</p>
+<p>【样例输入】</p>
+<p>15<br>liping 13512345678<br>zhaohong 13838929457<br>qiansan 13900223399<br>zhouhao 18578294857<br>anhai 13573948758<br>liping 13512345678<br>zhaohong 13588339922<br>liping 13833220099<br>boliang 15033778877<br>zhaohong 13838922222<br>tianyang 18987283746<br>sunnan 13599882764<br>zhaohong 13099228475<br>liushifeng 13874763899<br>caibiao 13923567890</p>
+<p>【样例输出】</p>
+<p>anhai 13573948758<br>boliang 15033778877<br>caibiao 13923567890<br>liping 13512345678<br>liping_1 13833220099<br>liushifeng 13874763899<br>qiansan 13900223399<br>sunnan 13599882764<br>tianyang 18987283746<br>zhaohong 13838929457<br>zhaohong_1 13588339922<br>zhaohong_2 13838922222<br>zhaohong_3 13099228475<br>zhouhao 18578294857</p>
+<p>【样例说明】</p>
+<p>输入了15个人名和电话号码。其中第一项和第六项完全相同，都是“liping 13512345678”，将第六项删除，第一项保留；</p>
+<p>第八项和第一项人名相同，电话不同，则将第八项的人民整理为liping_1；同样，第二项、第七项、第十项、第十三项的人名都相同，将后面三项的人名分别整理为：zhaohong_1、zhaohong_2和zhaohong_3。</p>
+<p>最后将整理后的电话簿按照姓名进行从小到大排序，分行输出排序结果。</p>
+<p>【评分标准】</p>
+<p>该题要求编程实现通讯录的整理与排序，提交程序文件名为sort.c。</p>
+<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><h2 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">student</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> flag;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> number[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> cnt;</span><br><span class="line">&#125;stu[<span class="number">105</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span>  <span class="title">student</span> <span class="title">stu</span>[105];</span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;= n; i++)</span><br><span class="line">        &#123;<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,stu[i].name,stu[i].number); stu[i].flag = <span class="number">0</span>; stu[i].cnt = <span class="number">0</span>;&#125;</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">int</span> fg = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; fg; i++) &#123;</span><br><span class="line">		fg = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">char</span> temp1[<span class="number">25</span>],temp2[<span class="number">25</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = n; j &gt;= i+<span class="number">1</span>; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">strcmp</span>(stu[j<span class="number">-1</span>].name,stu[j].name)&gt;<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">strcpy</span>(temp1,stu[j].name);</span><br><span class="line">                <span class="built_in">strcpy</span>(stu[j].name,stu[j<span class="number">-1</span>].name);</span><br><span class="line">                <span class="built_in">strcpy</span>(stu[j<span class="number">-1</span>].name,temp1);</span><br><span class="line">                <span class="built_in">strcpy</span>(temp2,stu[j].number);</span><br><span class="line">                <span class="built_in">strcpy</span>(stu[j].number,stu[j<span class="number">-1</span>].number);</span><br><span class="line">                <span class="built_in">strcpy</span>(stu[j<span class="number">-1</span>].number,temp2);</span><br><span class="line">                fg = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(stu[i].name,stu[i+<span class="number">1</span>].name)==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">strcmp</span>(stu[i].number,stu[i+<span class="number">1</span>].number)==<span class="number">0</span>)</span><br><span class="line">                stu[i+<span class="number">1</span>].flag = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> stu[i+<span class="number">1</span>].cnt = stu[i].cnt + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(stu[i].cnt &gt;=<span class="number">1</span> &amp;&amp;stu[i].flag == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%s_%d %s\n"</span>,stu[i].name,stu[i].cnt,stu[i].number);</span><br><span class="line">        <span class="keyword">if</span>(stu[i].cnt == <span class="number">0</span> &amp;&amp; stu[i].flag == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%s %s\n"</span>,stu[i].name,stu[i].number);</span><br><span class="line">        <span class="keyword">if</span>(stu[i].flag == <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">student</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> flag;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">char</span> number[<span class="number">20</span>];</span><br><span class="line">    <span class="keyword">int</span> cnt;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;stu[<span class="number">105</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">student</span>  *<span class="title">c</span> = (<span class="title">struct</span> <span class="title">student</span> *)<span class="title">a</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">student</span> 	*<span class="title">d</span> = (<span class="title">struct</span> <span class="title">student</span> *)<span class="title">b</span>;</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">strcmp</span>(c-&gt;name,d-&gt;name)!=<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">strcmp</span>(c-&gt;name,d-&gt;name);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> c-&gt;num - d-&gt;num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span>  <span class="title">student</span> <span class="title">stu</span>[105];</span></span><br><span class="line">    <span class="keyword">int</span> n,i;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i&lt;= n; i++)</span><br><span class="line">        &#123;<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,stu[i].name,stu[i].number); stu[i].flag = <span class="number">0</span>; stu[i].cnt = <span class="number">0</span>;stu[i].num = i;&#125;</span><br><span class="line">    qsort(stu+<span class="number">1</span>,n,<span class="keyword">sizeof</span>(stu[<span class="number">0</span>]),cmp);</span><br><span class="line">        </span><br><span class="line">     <span class="keyword">for</span>(i = <span class="number">1</span>; i&lt;=n;i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">if</span>(<span class="built_in">strcmp</span>(stu[i].name,stu[i+<span class="number">1</span>].name)==<span class="number">0</span>)</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="keyword">if</span>(<span class="built_in">strcmp</span>(stu[i].number,stu[i+<span class="number">1</span>].number)==<span class="number">0</span>)</span><br><span class="line">                 stu[i+<span class="number">1</span>].flag = <span class="number">1</span>;</span><br><span class="line">             <span class="keyword">else</span> stu[i+<span class="number">1</span>].cnt = stu[i].cnt + <span class="number">1</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span>(stu[i].cnt &gt;=<span class="number">1</span> &amp;&amp;stu[i].flag == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%s_%d %s\n"</span>,stu[i].name,stu[i].cnt,stu[i].number);</span><br><span class="line">         <span class="keyword">if</span>(stu[i].cnt == <span class="number">0</span> &amp;&amp; stu[i].flag == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"%s %s\n"</span>,stu[i].name,stu[i].number);</span><br><span class="line">         <span class="keyword">if</span>(stu[i].flag == <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="5-小型图书管理系统"><a href="#5-小型图书管理系统" class="headerlink" title="5 小型图书管理系统"></a>5 小型图书管理系统</h1><p><img src="http://i1.fuimg.com/723642/34400af5172c1567.png" alt=""></p>
+<h2 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h2><p>模拟，细心点就行了</p>
+<h2 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">books</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">51</span>];</span><br><span class="line">    <span class="keyword">char</span> author[<span class="number">21</span>];</span><br><span class="line">    <span class="keyword">char</span> publisher[<span class="number">41</span>];</span><br><span class="line">    <span class="keyword">char</span>  date[<span class="number">11</span>];</span><br><span class="line">&#125;book[<span class="number">505</span>],t,enter;</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1000004</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpfuc</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span> </span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">books</span> *<span class="title">c</span> = (<span class="title">struct</span> <span class="title">books</span>*)<span class="title">a</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">books</span> *<span class="title">d</span> = (<span class="title">struct</span> <span class="title">books</span>*)<span class="title">b</span>;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">strcmp</span>(c-&gt;name,d-&gt;name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fp = fopen(<span class="string">"books.txt"</span>,<span class="string">"r"</span>);</span><br><span class="line">    FILE *fp2 = fopen(<span class="string">"ordered.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">books</span> <span class="title">book</span>[505];</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>( <span class="number">4</span> == <span class="built_in">fscanf</span>(fp,<span class="string">"%s %s %s %s\n"</span>,book[n].name,book[n].author,book[n].publisher,book[n].date))		<span class="comment">//读入文件中的图书信息</span></span><br><span class="line">    	n++;	</span><br><span class="line">    qsort(book,n,<span class="keyword">sizeof</span>(book[<span class="number">0</span>]),cmpfuc);									</span><br><span class="line">    <span class="keyword">int</span> opt;</span><br><span class="line">    <span class="keyword">char</span> name[<span class="number">51</span>];</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;opt)==<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">switch</span>(opt)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s%s%s%s"</span>,book[n].name,book[n].author,book[n].publisher,book[n].date);</span><br><span class="line">			n++;</span><br><span class="line">			qsort(book,n,<span class="keyword">sizeof</span>(book[<span class="number">0</span>]),cmpfuc);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%s"</span>,name);</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">					<span class="keyword">if</span>( <span class="built_in">strstr</span>(book[i].name,name)!=<span class="literal">NULL</span>)</span><br><span class="line">						<span class="built_in">printf</span>(<span class="string">"%-50s%-20s%-30s%-10s\n"</span>,book[i].name,book[i].author,book[i].publisher,book[i].date);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">				<span class="built_in">scanf</span>(<span class="string">"%s"</span>,name);</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">					<span class="keyword">if</span>(<span class="built_in">strstr</span>(book[i].name,name)!=<span class="literal">NULL</span>)</span><br><span class="line">	</span><br><span class="line">						<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &lt; n; j++)</span><br><span class="line">							book[j] = book[j+<span class="number">1</span>];</span><br><span class="line">						n--;i--;</span><br><span class="line">					&#125;</span><br><span class="line">			<span class="keyword">default</span>: <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(opt== <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		<span class="built_in">fprintf</span>(fp2,<span class="string">"%-50s%-20s%-30s%-10s\n"</span>,book[i].name,book[i].author,book[i].publisher,book[i].date);</span><br><span class="line">    fclose(fp2);</span><br><span class="line">    fclose(fp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/22/2019DS%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%8A%E6%9C%BA/" data-id="ckcwvjok90002lk1bhwcs4vpj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B8%8A%E6%9C%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2019DS第三次上机
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2019DS第一次上机</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第三次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第二次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第一次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/21/My-First-Bolg/">My First Bolg</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/20/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 GTX2000<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

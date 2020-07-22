@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>2019DS第一次上机 | GTX2000&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="BUAA 2019 数据结构第一次上机  1 表达式计算（支持空格，连乘，连除）【问题描述】 从标准输入中读入一个整数算术运算表达式，如5 - 1 * 2 * 3 + 12 &#x2F; 2 &#x2F; 2  &#x3D; 。计算表达式结果，并输出。 要求：1、表达式运算符只有+、-、*、&#x2F;，表达式末尾的’&#x3D;’字符表示表达式输入结束，表达式中可能会出现空格；2、表达式中不含圆括号，不会出现错误的表达式；3、出现除号&#x2F;时，以整">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019DS第一次上机">
+<meta property="og:url" content="http://yoursite.com/2020/07/22/2019DS%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA/index.html">
+<meta property="og:site_name" content="GTX2000&#39;s Blog">
+<meta property="og:description" content="BUAA 2019 数据结构第一次上机  1 表达式计算（支持空格，连乘，连除）【问题描述】 从标准输入中读入一个整数算术运算表达式，如5 - 1 * 2 * 3 + 12 &#x2F; 2 &#x2F; 2  &#x3D; 。计算表达式结果，并输出。 要求：1、表达式运算符只有+、-、*、&#x2F;，表达式末尾的’&#x3D;’字符表示表达式输入结束，表达式中可能会出现空格；2、表达式中不含圆括号，不会出现错误的表达式；3、出现除号&#x2F;时，以整">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-22T04:23:31.000Z">
+<meta property="article:modified_time" content="2020-07-22T04:25:04.854Z">
+<meta property="article:author" content="GTX2000">
+<meta property="article:tag" content="生活">
+<meta property="article:tag" content="ACM">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="GTX2000&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">GTX2000&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Hello,World</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019DS第一次上机" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA/" class="article-date">
+  <time datetime="2020-07-22T04:23:31.000Z" itemprop="datePublished">2020-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2019DS第一次上机
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>BUAA 2019 数据结构第一次上机</p>
+<hr>
+<h1 id="1-表达式计算（支持空格，连乘，连除）"><a href="#1-表达式计算（支持空格，连乘，连除）" class="headerlink" title="1 表达式计算（支持空格，连乘，连除）"></a>1 表达式计算（支持空格，连乘，连除）</h1><p>【问题描述】</p>
+<p>从标准输入中读入一个整数算术运算表达式，如5 - 1 * 2 * 3 + 12 / 2 / 2  = 。计算表达式结果，并输出。</p>
+<p>要求：<br>1、表达式运算符只有+、-、*、/，表达式末尾的’=’字符表示表达式输入结束，表达式中可能会出现空格；<br>2、表达式中不含圆括号，不会出现错误的表达式；<br>3、出现除号/时，以整数相除进行运算，结果仍为整数，例如：5/3结果应为1。</p>
+<p>【输入形式】</p>
+<p>在控制台中输入一个以’=’结尾的整数算术运算表达式。</p>
+<p>【输出形式】</p>
+<p>向控制台输出计算结果（为整数）。</p>
+<p>【样例1输入】</p>
+<p>5 - 1 * 2 * 3 + 12 / 2 / 2  =</p>
+<p>【样例1输出】</p>
+<p>2</p>
+<p>【样例2输入】</p>
+<p>500 =</p>
+<p>【样例2输出】</p>
+<p>500</p>
+<p>【样例1说明】</p>
+<p>输入的表达式为5 - 1 * 2 * 3 + 12 / 2 / 2 =，按照整数运算规则，计算结果为2，故输出2。</p>
+<p>【样例2说明】</p>
+<p>输入的表达式为500 = ，没有运算符参与运算，故直接输出500。</p>
+<p>算法之一提示：<br>1、可以利用gets函数，读取整行表达式；<br>2、对于空格，可以考虑首先去除表达式中的所有空格<br>3、可以设一计数器用来记录已读取、但未参加运算的运算符的个数，根据该计数器来判断如何进行运算；<br>4、可以设计一函数：实现二元整数算术运算。</p>
+<p>【评分标准】</p>
+<p>该题要求输出整数表达式的计算结果，共有5个测试点。上传C语言文件名为example1c.c。</p>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><p>这题没有括号，难度是初级。 下面说说思路：</p>
+<p>我们建立两个栈，一个用来存数字，一个用来存操作符，如： + , - , * , /   但需要注意的是操作符运算的优先级 即先乘除，后加减  </p>
+<p>那么我们就在压栈的时候把乘除操作做完（即取数字栈栈顶的两个数字，对其进行乘 / 除)， 并把乘除操作后的数字压入栈中<strong>这个很重要</strong></p>
+<p>需要注意的是，在下面的代码中是先判断符号栈栈顶是不是乘除号，后把当前读入符号压入栈中，也就意味着最后一次压入的操作符可能是乘除号，我们需要在此做特殊操作</p>
+<p>经过以上操作之后，符号栈中只有加减号了，那么直接对栈中元素遍历，就完事了。</p>
+<p>这个题就只考察了栈的概念和基本操作。嗯，就这样。</p>
+<h2 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h2><p><strong>不要照搬，查重还是很厉害的</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> opt[<span class="number">12315</span>];</span><br><span class="line"><span class="keyword">int</span> top1,top2;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">12315</span>];</span><br><span class="line"><span class="keyword">long</span>  <span class="keyword">long</span> <span class="built_in">stack</span>[<span class="number">12315</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> temp;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%[^=]"</span>,&amp;s);                        <span class="comment">//读入 = 前的字符串</span></span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">' '</span>) <span class="keyword">continue</span>;        	 <span class="comment">//若是' ' 跳过</span></span><br><span class="line">        <span class="keyword">if</span>(s[i] &gt;= <span class="string">'0'</span> &amp;&amp; s[i] &lt;=<span class="string">'9'</span>)		 <span class="comment">// 读入数字</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(s[i] &gt;= <span class="string">'0'</span> &amp;&amp; s[i] &lt;=<span class="string">'9'</span>) temp = temp*<span class="number">10</span> + s[i++] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="built_in">stack</span>[++top1] = temp;			<span class="comment">//将当前读入的数字压如栈</span></span><br><span class="line">            i--;                            <span class="comment">//为什么要i--呢， 因为前面多加了一个</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> opts = s[i];				<span class="comment">//读入操作符</span></span><br><span class="line">            <span class="keyword">if</span>( (opt[top2] == <span class="string">'*'</span>|| opt[top2] == <span class="string">'/'</span>)&amp;&amp;top1&gt;=<span class="number">2</span>&amp;&amp;top2&gt;=<span class="number">1</span>)      <span class="comment">//如果符号栈栈顶为乘除，先算乘除，此时要求数字栈有至少2个数</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(opt[top2] == <span class="string">'*'</span>) temp = <span class="built_in">stack</span>[top1<span class="number">-1</span>]*<span class="built_in">stack</span>[top1];        <span class="comment">//取出栈顶两个数字进行计算</span></span><br><span class="line">                <span class="keyword">else</span> temp = <span class="built_in">stack</span>[top1<span class="number">-1</span>]/<span class="built_in">stack</span>[top1];</span><br><span class="line">                top1--;</span><br><span class="line">                top2--;</span><br><span class="line">                <span class="built_in">stack</span>[top1] = temp;   										  <span class="comment">//把计算结果压入栈中</span></span><br><span class="line">            &#125;</span><br><span class="line">            opt[++top2] = opts;												 <span class="comment">//  把本次读入的操作符压入栈中</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((opt[top2] == <span class="string">'*'</span> || opt[top2] == <span class="string">'/'</span> )&amp;&amp;top1&gt;=<span class="number">2</span> &amp;&amp; top2&gt;=<span class="number">1</span>)           <span class="comment">//如果最后一次压入符号栈中的数字是乘除</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(opt[top2]== <span class="string">'*'</span>) temp = <span class="built_in">stack</span>[top1<span class="number">-1</span>]*<span class="built_in">stack</span>[top1];</span><br><span class="line">        <span class="keyword">else</span> temp = <span class="built_in">stack</span>[top1<span class="number">-1</span>]/<span class="built_in">stack</span>[top1];</span><br><span class="line">        top1--;</span><br><span class="line">        top2--;</span><br><span class="line">        <span class="built_in">stack</span>[top1] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    temp = <span class="built_in">stack</span>[<span class="number">1</span>];														 <span class="comment">//从第一个数开始</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i&lt; top1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(opt[i]== <span class="string">'+'</span>) temp = temp + <span class="built_in">stack</span>[i+<span class="number">1</span>];							<span class="comment">//运算加减</span></span><br><span class="line">        <span class="keyword">else</span> temp = temp - <span class="built_in">stack</span>[i+<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld"</span>,temp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-扩展字符A"><a href="#2-扩展字符A" class="headerlink" title="2 扩展字符A"></a>2 扩展字符A</h1><p>【问题描述】<br>从键盘输入包含扩展符’-‘的字符串，将其扩展为等价的完整字符，例如将a-d扩展为abcd，并输出扩展后的字符串。</p>
+<p>要求：只处理[a-z]、[A-Z]、[0-9]范围内的字符扩展，即只有当扩展符前后的字符同时是小写字母、大写字母或数字，并且扩展符后的字符大于扩展符前的字符时才进行扩展，其它情况不进行扩展，原样输出。例如：a-R、D-e、0-b、4-B等字符串都不进行扩展。</p>
+<p>【输入形式】<br>从键盘输入包含扩展符的字符串<br>【输出形式】<br>输出扩展后的字符串</p>
+<p>【输入样例1】<br>ADEa-g-m02<br>【输出样例1】<br>ADEabcdefghijklm02</p>
+<p>【输入样例2】<br>cdeT-bcd<br>【输出样例2】<br>cdeT-bcd</p>
+<p>【样例说明】<br>将样例1的输入ADEa-g-m02扩展为：ADEabcdefghijklm02；样例2的输入cdeT-bcd中，扩展符前的字符为大写字母，扩展符后的字符为小写字母，不在同一范围内，所以不进行扩展。<br>【评分标准】<br>该题要求扩展字符，提交程序文件expand.c。</p>
+<h2 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h2><p>水题，不想讲什么思路了，简单判断一下就行。</p>
+<h2 id="题解：-1"><a href="#题解：-1" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> *low = <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>;               <span class="comment">//把大写字母，小写字母，数字写进数组里</span></span><br><span class="line"><span class="keyword">char</span> *upper = <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>;</span><br><span class="line"><span class="keyword">char</span> *num = <span class="string">"0123456789"</span>;</span><br><span class="line"><span class="keyword">char</span> s[<span class="number">505</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);                                      <span class="comment">//读入字符串</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; <span class="built_in">strlen</span>(s);i++)                        <span class="comment">//大家别学，我是懒得改了，一般的话前面定义个int len = strlen(s)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] &gt;= <span class="string">'a'</span> &amp;&amp; s[i] &lt;=<span class="string">'z'</span>) <span class="built_in">printf</span>(<span class="string">"%c"</span>,s[i]);            <span class="comment">//若遇字母，数字，直接输出</span></span><br><span class="line">        <span class="keyword">if</span>(s[i] &gt;= <span class="string">'A'</span> &amp;&amp; s[i] &lt;=<span class="string">'Z'</span>) <span class="built_in">printf</span>(<span class="string">"%c"</span>,s[i]);</span><br><span class="line">        <span class="keyword">if</span>(s[i] &gt;= <span class="string">'0'</span> &amp;&amp; s[i] &lt;=<span class="string">'9'</span>) <span class="built_in">printf</span>(<span class="string">"%c"</span>,s[i]);</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'-'</span>)                                             <span class="comment">//若遇'-' 进行讨论</span></span><br><span class="line">        &#123;   </span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">islower</span>(s[i<span class="number">-1</span>])&amp;&amp;<span class="built_in">islower</span>(s[i+<span class="number">1</span>]) &amp;&amp; s[i<span class="number">-1</span>] &lt; s[i+<span class="number">1</span>])                                 <span class="comment">// s[i] 前后两都是小写字母，并且前面的字母的ASCII码比后面小</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">char</span> *j;</span><br><span class="line">                <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(j = low; j&lt; low + <span class="number">26</span>; j++)                                                      <span class="comment">//从s[i-1]的字母输出到s[i+1]的字母</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(*j == s[i+<span class="number">1</span>]) <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">if</span>(*j == s[i<span class="number">-1</span>]) &#123;flag = <span class="number">1</span>;<span class="keyword">continue</span>;&#125;</span><br><span class="line">                    <span class="keyword">if</span>(flag == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%c"</span>,*j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">isupper</span>(s[i<span class="number">-1</span>])&amp;&amp;<span class="built_in">isupper</span>(s[i+<span class="number">1</span>]) &amp;&amp; s[i<span class="number">-1</span>] &lt; s[i+<span class="number">1</span>])                            <span class="comment">//判断大写字母 ， 与小写字母同理</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">char</span> *j;</span><br><span class="line">                <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(j = upper; j&lt; upper + <span class="number">26</span>; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(*j == s[i+<span class="number">1</span>]) <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">if</span>(*j == s[i<span class="number">-1</span>]) &#123;flag = <span class="number">1</span>;<span class="keyword">continue</span>;&#125;</span><br><span class="line">                    <span class="keyword">if</span>(flag == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%c"</span>,*j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(s[i<span class="number">-1</span>]&gt;=<span class="string">'0'</span>&amp;&amp;s[i<span class="number">-1</span>]&lt;=<span class="string">'9'</span>&amp;&amp;s[i+<span class="number">1</span>]&gt;=<span class="string">'0'</span>&amp;&amp;s[i+<span class="number">1</span>]&lt;=<span class="string">'9'</span> &amp;&amp; s[i<span class="number">-1</span>] &lt; s[i+<span class="number">1</span>])          <span class="comment">//判断数字，与小写字母同理</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">char</span> *j;</span><br><span class="line">                <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>( j = num; j &lt; num +<span class="number">10</span>; j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(*j == s[i+<span class="number">1</span>]) <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">if</span>(*j == s[i<span class="number">-1</span>]) &#123;flag = <span class="number">1</span>;<span class="keyword">continue</span>;&#125;</span><br><span class="line">                    <span class="keyword">if</span>(flag == <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%c"</span>,*j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%c"</span>,s[i]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="3-超长正整数的减法"><a href="#3-超长正整数的减法" class="headerlink" title="3 超长正整数的减法"></a>3 超长正整数的减法</h1><p>【问题描述】<br>编写程序实现两个超长正整数（每个最长80位数字）的减法运算。</p>
+<p>【输入形式】</p>
+<p>从键盘读入两个整数，要考虑输入高位可能为0的情况（如00083）。</p>
+<ol>
+<li>第一行是超长正整数A；</li>
+<li>第二行是超长正整数B；</li>
+</ol>
+<p>【输出形式】<br>输出只有一行，是长整数A减去长整数B的运算结果，从高到低依次输出各位数字。要求：若结果为0，则只输出一个0；否则输出的结果的最高位不能为0，并且各位数字紧密输出。<br> 【输入样例】</p>
+<p>234098<br>134098703578230056</p>
+<p>【输出样例】<br> －134098703577995958</p>
+<p>【样例说明】<br>进行两个正整数减法运算， 234098 －134098703578230056 = －134098703577995958。</p>
+<p>【评分标准】<br> 完全正确得20分，每个测试点4分，提交程序文件名为subtract.c。</p>
+<h2 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h2><p>高精度的模版题。</p>
+<p>高精度的思路就是用数组来模拟一个巨大的数字(位数很大的那种),同过对数组的位数的操作达到加，减，乘，除等效果</p>
+<p>这个应该是程序设计基础的时候就做过吧。。。 没做过自己想想，也不难，这题也不多说了</p>
+<p><strong>注意下面的代码仅仅适用于两个正数相减的情况</strong></p>
+<h2 id="题解：-2"><a href="#题解：-2" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">5e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">char</span> s1[maxn],s2[maxn],s3[maxn];				<span class="comment">//将两个大数字分别保留在s1,s2中，s3临时用</span></span><br><span class="line"><span class="keyword">int</span> a[maxn], b[maxn], c[maxn];					<span class="comment">//将s1,s2的每一位转化成数字，存在a,b,中，c中存a,b相减后的结果</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 为方便说，下面说的数字a,数字b，就是从s1,s2读入的数字，别理解歪了，和数组a,数组b区分开</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,s1,s2);</span><br><span class="line">	<span class="keyword">int</span> lena = <span class="built_in">strlen</span>(s1);</span><br><span class="line">	<span class="keyword">int</span> lenb = <span class="built_in">strlen</span>(s2);</span><br><span class="line">	<span class="keyword">if</span>(lena &lt; lenb || (lena == lenb &amp;&amp; <span class="built_in">strcmp</span>(s1,s2) &lt; <span class="number">0</span>))&#123;   <span class="comment">//如果数a比数b小，输出负号并交换两个数，做到大数减小数</span></span><br><span class="line">		<span class="built_in">putchar</span>(<span class="string">'-'</span>);</span><br><span class="line">		<span class="built_in">strcpy</span>(s3,s1);</span><br><span class="line">		<span class="built_in">strcpy</span>(s1,s2);</span><br><span class="line">		<span class="built_in">strcpy</span>(s2,s3);</span><br><span class="line">		<span class="keyword">int</span> t = lena;</span><br><span class="line">		lena = lenb;</span><br><span class="line">		lenb = t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 很重要倒着将数字存入int数组中，为什么呢？你想想你算减法的时候是不是从个位往前算的 233</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lena; i++) a[lena - i] = s1[i] - <span class="string">'0'</span>; <span class="comment">// from 1 to lena  </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lenb; i++) b[lenb - i] = s2[i] - <span class="string">'0'</span>; <span class="comment">// from 1 to lenb</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"> 	<span class="keyword">while</span>( i &lt;= lena &amp;&amp; i &lt;= lenb)&#123;</span><br><span class="line"> 		<span class="keyword">if</span>(a[i] - b[i] &lt; <span class="number">0</span>) &#123;a[i] += <span class="number">10</span>; a[i+<span class="number">1</span>]--;&#125;			<span class="comment">//不够减向上一位借个1 是不是很形象</span></span><br><span class="line"> 		c[i] = a[i] - b[i];									<span class="comment">//将计算结果输入保存结果的数字中</span></span><br><span class="line"> 		i++;</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	<span class="comment">// 默认lena &gt;= lenb</span></span><br><span class="line"> 	<span class="keyword">while</span>( i &lt;= lena ) &#123;									<span class="comment">//如果数字a位数很多，数字b位数比他少，那么上一步结束后i == lenb 还有一些未处理的数字在数组a中</span></span><br><span class="line"> 		<span class="keyword">if</span>(a[i] &lt; <span class="number">0</span>) &#123;a[i]  += <span class="number">10</span>; a[i+<span class="number">1</span>]--;&#125;				<span class="comment">//这一步就是对这些数字进行操作</span></span><br><span class="line"> 		c[i] = a[i];										</span><br><span class="line"> 	&#125;</span><br><span class="line"></span><br><span class="line"> 	<span class="comment">// 上一步结束后 i == lena 但是次数可能会有前导0，下一步就是把前导零删除</span></span><br><span class="line"> 	<span class="keyword">while</span>(!c[i] &amp;&amp; i &gt; <span class="number">1</span>) i--;								</span><br><span class="line"> 	<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt;= <span class="number">1</span>; j--) <span class="built_in">printf</span>(<span class="string">"%d"</span>,c[j]);			<span class="comment">//倒序输出，为什么要倒序呢？还记不记得上面你已经倒序了一次，这回就是给他正过来</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-小数形式与科学计数法转换（简）"><a href="#4-小数形式与科学计数法转换（简）" class="headerlink" title="4 小数形式与科学计数法转换（简）"></a>4 小数形式与科学计数法转换（简）</h1><p>【问题描述】</p>
+<p>编写一个程序，将用小数表示的浮点数，转换成科学计数法的形式输出。输入的数据没有符号，小数点前后必有数字，且全为有效数据，即小数点后的末尾数字不为0；小数点前若只有一位数字，可以为0，否则小数点前的最高位数字不为0。</p>
+<p>提示：以字符串形式保存相关数据。</p>
+<p>【输入形式】</p>
+<p>从控制台输入一小数，最后有回车换行符，所有输入的字符数不会超过100。</p>
+<p>【输出形式】</p>
+<p>以科学计数法形式输出数据。输出的数据由以下几部分构成：<br>1.底数部分是一个小数或整数，若为小数，则小数点前后必有数字，而且都为有效数字。即：小数点前只有一位大于0的数字，小数点后的末尾数字不能为0。若为整数，则只有一位数字，不带小数点。<br>2.必有小写字母“e”。<br>3.指数部分是一个整数，若大于等于0，则不带正号“+”。若小于0，则需要带负号“-”，且整数的最高位数字不为0。</p>
+<p>【输入样例1】</p>
+<p>0.000000000000002</p>
+<p>【输出样例1】</p>
+<p>2e-15</p>
+<p>【输入样例2】</p>
+<p>8.9845623489651700659</p>
+<p>【输出样例2】</p>
+<p>8.9845623489651700659e0</p>
+<p>【输入样例3】</p>
+<p>367298599999093453490394859509568659795603.4</p>
+<p>【输出样例3】</p>
+<p>3.672985999990934534903948595095686597956034e41</p>
+<p>【样例说明】</p>
+<p>以小数形式输入数据，然后转换成科学计数法形式输出。</p>
+<p>【评分标准】</p>
+<p>该题要求以科学计数法形式输出数据，提交程序文件名为notation.c。</p>
+<h2 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h2><p>谔，这个题也不难，也是模拟就能做的题。。。不多讲了</p>
+<h2 id="题解：-3"><a href="#题解：-3" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">105</span>];                        <span class="comment">//s用来存读入的数字</span></span><br><span class="line"><span class="keyword">int</span> num[<span class="number">105</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> wei=<span class="number">0</span>,i,flag = <span class="number">0</span>,zf = <span class="number">0</span>,fcnt = <span class="number">0</span>,k = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);              <span class="comment">//读入数字</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; <span class="built_in">strlen</span>(s);i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">'.'</span>) flag = <span class="number">1</span>;       <span class="comment">//出现小数点了，标记一下</span></span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">1</span>) wei++;            <span class="comment">//小数点后的数字，小数位数</span></span><br><span class="line">        <span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'-'</span>) zf = <span class="number">-1</span>;          <span class="comment">//如果是负数，记录一下</span></span><br><span class="line">        <span class="keyword">if</span>(s[i] != <span class="string">'0'</span>  &amp;&amp; s[i] != <span class="string">'-'</span> &amp;&amp; s[i] != <span class="string">'.'</span>) fcnt = <span class="number">1</span>;    <span class="comment">//发现第一个非零数，标记一下 可能有0.0000123的情况</span></span><br><span class="line">        <span class="keyword">if</span>(fcnt == <span class="number">1</span> &amp;&amp; s[i] != <span class="string">'.'</span>) num[k++] = s[i] - <span class="string">'0'</span>;         <span class="comment">//读入非零数  非零数的个数为K</span></span><br><span class="line">    &#125;</span><br><span class="line">    wei--;                                                          </span><br><span class="line">    <span class="keyword">if</span>(zf == <span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">"-"</span>);           <span class="comment">//是负数</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i&lt; k;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">".%d"</span>,num[i]);          <span class="comment">//科学技术法的形式，整数位只有一个数</span></span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d"</span>,num[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> zhishu = k - <span class="number">1</span> - wei;                   <span class="comment">//指数就等于总共的非零数的个数 - 小数点后的位数 - 1</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"e%d"</span>,zhishu);                       <span class="comment">//输出指数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+<h1 id="5-全排列数的生成"><a href="#5-全排列数的生成" class="headerlink" title="5 全排列数的生成"></a>5 全排列数的生成</h1><p>【问题描述】输入整数N( 1 &lt;= N &lt;= 10 )，生成从1<del>N所有整数的全排列。<br>【输入形式】输入整数N。<br>【输出形式】输出有N!行，每行都是从1</del>N所有整数的一个全排列，各整数之间以空格分隔。各行上的全排列不重复。输出各行遵循“小数优先”原则, 在各全排列中，较小的数尽量靠前输出。如果将每行上的输出看成一个数字，则所有输出构成升序数列。具体格式见输出样例。<br>【样例输入1】1<br>【样例输出1】1<br>【样例说明1】输入整数N=1，其全排列只有一种。<br>【样例输入2】3<br>【样例输出2】<br>1 2 3<br>1 3 2<br>2 1 3<br>2 3 1<br>3 1 2<br>3 2 1<br>【样例说明2】输入整数N=3，要求整数1、2、3的所有全排列, 共有N!=6行。且先输出1开头的所有排列数，再输出2开头的所有排列数，最后输出3开头的所有排列数。在以1开头的所有全排列中同样遵循此原则。<br>【样例输入3】10<br>【样例输出3】<br>1 2 3 4 5 6 7 8 9 10<br>1 2 3 4 5 6 7 8 10 9<br>1 2 3 4 5 6 7 9 8 10<br>1 2 3 4 5 6 7 9 10 8<br>1 2 3 4 5 6 7 10 8 9<br>1 2 3 4 5 6 7 10 9 8<br>1 2 3 4 5 6 8 7 9 10<br>1 2 3 4 5 6 8 7 10 9<br>1 2 3 4 5 6 8 9 7 10<br>1 2 3 4 5 6 8 9 10 7<br>……………………<br>【样例说明3】输入整数N=10，要求整数1、2、3、……、10的所有全排列。上例显示了输出的前10行。<br>【运行时限】要求每次运行时间限制在20秒之内。超出该时间则认为程序错误。提示：当N增大时，运行时间将急剧增加。在编程时要注意尽量优化算法，提高运行效率。<br>【评分标准】该题要求输出若干行整数。。</p>
+<h2 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h2><p>这个题比较有意思，用到了dfs的搜索的思路，很简单的dfs，也不想说了。。。。。 别怪我懒，题真的不难。</p>
+<h2 id="题解：-4"><a href="#题解：-4" class="headerlink" title="题解："></a>题解：</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>],book[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> <span class="built_in">step</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">step</span>==n)&#123;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d "</span>,a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(book[i]==<span class="number">0</span>)&#123;             <span class="comment">//第i个数还没有用过</span></span><br><span class="line">            a[<span class="built_in">step</span>]=i+<span class="number">1</span>;</span><br><span class="line">            book[i]=<span class="number">1</span>;              <span class="comment">//标记第i个数，表示已经用过</span></span><br><span class="line">            dfs(<span class="built_in">step</span>+<span class="number">1</span>);</span><br><span class="line">            book[i]=<span class="number">0</span>;              <span class="comment">//解除第i个数的标记</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    dfs(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/22/2019DS%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA/" data-id="ckcwvjojy0000lk1ba9fe0t4q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/22/2019DS%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%8A%E6%9C%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2019DS第二次上机
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/21/My-First-Bolg/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">My First Bolg</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第三次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第二次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/22/2019DS%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA/">2019DS第一次上机</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/21/My-First-Bolg/">My First Bolg</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/20/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 GTX2000<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
