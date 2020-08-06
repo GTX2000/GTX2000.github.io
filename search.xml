@@ -280,8 +280,8 @@ fclose(out);</code></pre><p>}</p>
     <url>/2020/07/21/My-First-Bolg/</url>
     <content><![CDATA[<h1 id="This-is-my-first-blog"><a href="#This-is-my-first-blog" class="headerlink" title="This is my first blog"></a>This is my first blog</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>倒腾了半天，终于吧自己的博客部署完了，虽然还有很多可以修改的地方，先这样了吧，买的域名还没有审核过。<br>添域名的事情以后再说了</p>
 <p>现在试试操作</p>
-<p>现在试着插入一张图片</p>
-<p><img src="http://i1.fuimg.com/723642/2fe99d3055753d76.png" alt="Hello,Lupin!"></p>
+<p>现在试着插入一张图片<br>贴图库这个图床好坑，再也不用了。</p>
+<p><img src="https://s1.ax1x.com/2020/08/06/aRZJ4f.png" alt="Hello,Lupin!"></p>
 ]]></content>
   </entry>
   <entry>
@@ -305,22 +305,35 @@ fclose(out);</code></pre><p>}</p>
   <entry>
     <title>Markdown表情</title>
     <url>/2020/07/22/Markdown%E8%A1%A8%E6%83%85/</url>
-    <content><![CDATA[<p>MarkDown也可以插入很多表情<br>比如: :sunglasses: :star: :zzz: :pray:<br>更多的可以到下面的网站去查询:<br><a href="https://www.webfx.com/tools/emoji-cheat-sheet/" target="_blank" rel="noopener">https://www.webfx.com/tools/emoji-cheat-sheet/</a><br>也有很多不会显示:sweat:</p>
+    <content><![CDATA[<p>MarkDown也可以插入很多表情<br>555, 网站上不能显示，markdown的有些版本能显示。<br>比如: :sunglasses: :star: :zzz: :pray:<br>更多的可以到下面的网站去查询:<br><a href="https://www.webfx.com/tools/emoji-cheat-sheet/" target="_blank" rel="noopener">https://www.webfx.com/tools/emoji-cheat-sheet/</a><br>也有很多不会显示:sweat:</p>
 ]]></content>
   </entry>
   <entry>
     <title>LupinIII</title>
     <url>/2020/07/22/LupinIII/</url>
     <content><![CDATA[<p>今天看完了鲁邦新电影Lupin3rd the first</p>
-<p>还是很精彩的<br>但还是旧版鲁邦的配音有感觉  :smiley:<br>:one::two::three:<br><img src="http://i1.fuimg.com/723642/c37e55e06e04e49a.png" alt=""></p>
-<p><img src="http://i1.fuimg.com/723642/439c7d75abfd2a04.png" alt=""></p>
+<p>还是很精彩的<br>但还是旧版鲁邦的配音有感觉  :smiley:<br>:one::two::three:<br><img src="https://s1.ax1x.com/2020/08/06/aRZHPK.png" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/08/06/aRZLxe.png" alt=""></p>
 ]]></content>
   </entry>
   <entry>
     <title>脑子短路的一天</title>
     <url>/2020/08/05/%E8%84%91%E5%AD%90%E7%9F%AD%E8%B7%AF%E7%9A%84%E4%B8%80%E5%A4%A9/</url>
-    <content><![CDATA[<h1 id="今天全天智商不在线。"><a href="#今天全天智商不在线。" class="headerlink" title="今天全天智商不在线。"></a>今天全天智商不在线。</h1><p>为了节省点C盘的空间，把好多文件都删了，现在大晚上的忙着恢复误删的文件。。。。<br>删文件需谨慎，特别是C盘的C</p>
-<p><img src="http://i1.fuimg.com/723642/1f0d3081b73999be.jpg" alt=""></p>
+    <content><![CDATA[<h1 id="今天全天智商不在线。"><a href="#今天全天智商不在线。" class="headerlink" title="今天全天智商不在线。"></a>今天全天智商不在线。</h1><p>为了节省点C盘的空间，把好多文件都删了，现在大晚上的忙着恢复误删的文件。。。。<br>删文件需谨慎，特别是C盘的C<br><img src="https://s1.ax1x.com/2020/08/06/aReai6.jpg" alt=""></p>
+<p>今天发现以前用的贴图库的图床挂了。 7天过后就要收费了，是时候换图床了。</p>
+<p><code>几个很不错的图床:</code> </p>
+<ol>
+<li>imgur(非常流行,强烈推荐): <a href="https://imgur.com" target="_blank" rel="noopener">https://imgur.com</a></li>
+<li>SM.MS(适合国内用户,但自己很难控制图片): <a href="https://sm.ms" target="_blank" rel="noopener">https://sm.ms</a></li>
+<li>upload.cc(繁体界面): <a href="https://upload.cc" target="_blank" rel="noopener">https://upload.cc</a></li>
+<li>路过图床: <a href="https://imgchr.com" target="_blank" rel="noopener">https://imgchr.com</a></li>
+<li>img9.top 无限图床: <a href="https://img9.top" target="_blank" rel="noopener">https://img9.top</a></li>
+<li>imgbox(英文界面): <a href="https://imgbox.com" target="_blank" rel="noopener">https://imgbox.com</a></li>
+<li>ooxx.ooo(英文界面): <a href="https://ooxx.ooo" target="_blank" rel="noopener">https://ooxx.ooo</a></li>
+<li>postimage(英文界面): <a href="https://postimages.org" target="_blank" rel="noopener">https://postimages.org</a></li>
+<li>imgurl(中文界面): <a href="https://imgurl.org" target="_blank" rel="noopener">https://imgurl.org</a></li>
+</ol>
+<p>转自SPhard的博客 ：<a href="https://sphard.com/%E5%A6%82%E4%BD%95%E5%9C%A8YouTube%E5%92%8Cbilibili(%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9B%E7%AB%99)%E4%B8%8A%E8%AF%84%E8%AE%BA%E5%9B%BE%E7%89%87%EF%BC%8C%E5%9C%A8%E8%AF%84%E8%AE%BA%E9%87%8C%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87.html" target="_blank" rel="noopener">https://sphard.com/%E5%A6%82%E4%BD%95%E5%9C%A8YouTube%E5%92%8Cbilibili(%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9B%E7%AB%99)%E4%B8%8A%E8%AF%84%E8%AE%BA%E5%9B%BE%E7%89%87%EF%BC%8C%E5%9C%A8%E8%AF%84%E8%AE%BA%E9%87%8C%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87.html</a></p>
 ]]></content>
   </entry>
 </search>
